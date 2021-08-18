@@ -1,7 +1,7 @@
 <?php
 /*
- * Plugin Name: Imagely Featured Images
- * Description: Add custom notes before or after the comment form.
+ * Plugin Name: Imagely Category Images
+ * Description: Adds featured image for category, uses it on category pages.
  * Version: 1.0.0
  * Author: Erick Canzer
  * Author URI: http://erickdanzer.com
@@ -46,7 +46,7 @@ class Imagely_Category_Images
 	    <tr class='form-field'>
 	        <th scope='row'><label for='imagely_category_image'><?php _e('Add Image URL'); ?></label></th>
 	        <td>
-	            <input type='text' name='imagely_category_image' id='imagely_category_image' value='<?php echo $image ?>'>
+	            <input type='text' name='imagely_category_image' id='imagely_category_image' value='<?php echo $category_image ?>'>
 	        </td>
 	    </tr> 
 
@@ -62,12 +62,12 @@ class Imagely_Category_Images
 	// Replace page header image for Imagely theme on category pages
 	public function show_category_image() {
 		if ( is_category() ) {
-			$imagely_category_image = get_term_meta(get_queried_object_id())["imagely_category_image"][0];
-			if ($imagely_category_image) {
+			$category_image = get_term_meta(get_queried_object_id())["imagely_category_image"][0];
+			if ($category_image) {
 				echo "
 					<style>
 						.category .page-header {
-			    			background-image: url(" . $imagely_category_image . ") !important;
+			    			background-image: url(" . $category_image . ") !important;
 			    		}{}
 					</style>
 				";
