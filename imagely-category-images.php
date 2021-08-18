@@ -32,15 +32,28 @@ class Imagely_Category_Images
 	// Contructor
 	public function __construct() {
 		// Back end hooks
-		add_action( 'category_edit_form_fields', [$this, 'category_image_field'] );
+		add_action( 'category_add_form_fields', [$this, 'new_category_image_field'] );
+		add_action( 'category_edit_form_fields', [$this, 'edit_category_image_field'] );
+		add_action( 'created_category', [$this, 'save_category_image'] );
 		add_action( 'edited_category', [$this, 'save_category_image'] );
 
 		// Front end hooks
 		add_action('wp_head', [$this, 'show_category_image'], 100);
 	}
 
-	// Show image field when adding or editing category
-	public function category_image_field( $tag ) {
+	// Show image field when adding a new category
+	public function new_category_image_field() {
+		?>
+		    <div class="form-field term-image-wrap">
+				<label for="imagely_category_image"><?php _e('Add Image URL'); ?></label>
+				<input type='text' name='imagely_category_image' id='imagely_category_image' value=''>
+				<p>Enter an image url (ie, from the media library). The image may show behind the page title on category pages, depending on your Imagely theme settings.</p>
+			</div>
+	    <?php
+	}
+
+	// Show image field when editing an existing category
+	public function edit_category_image_field( $tag ) {
 		$category_image = get_term_meta( $tag->term_id, 'imagely_category_image', true ); ?>
 
 	    <tr class='form-field'>
