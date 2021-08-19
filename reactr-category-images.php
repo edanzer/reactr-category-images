@@ -26,7 +26,7 @@
 defined( 'ABSPATH' ) || exit;
 
 // Define constants
-define( 'RCI_DEV_MODE', true );
+define( 'RCI_DEV_MODE', false );
 define( 'RCI_VERSION', RCI_DEV_MODE ? time() : '1.0.0' );
 define( 'RCI_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
