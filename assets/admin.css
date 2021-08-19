@@ -1,10 +1,10 @@
-.imagely-category-image-button {
+.reactr-category-image-button {
 	display:inline-block;
 	width:20%;
 	text-align:center;
 }
 
-#imagely-category-image {
+#reactr-category-image {
 	display:inline-block;
 	width:76%;
 }
